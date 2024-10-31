@@ -18,9 +18,7 @@ const util = require('util')
 const { sms, downloadMediaMessage } = require('./DATABASE/msg')
 const axios = require('axios')
 const { File } = require('megajs')
-const prefix = config.PREFIX 
-const path = require('path');
-const asciiArt = ``;
+
 const ownerNumber = ['94718913389']
 
 //--------------------| SAHAS-MD Sesion Output |--------------------//
@@ -40,7 +38,20 @@ if (!fs.existsSync(__dirname + '/Session/creds.json')) {
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 8000;
+//========connect mongodb=====================================
 
+async function connectToWA() {
+//========connect mongodb======================
+const connectDB = require('./DATABASE/mongodb')
+connectDB();
+
+//=========================================
+        
+const {readEnv} = require('./DATABASE/database')
+const config = await readEnv();
+const prefix = config.PREFIX
+
+//=========================================
 async function connectToWA() {
     console.log(asciiArt);
     console.log("✅ SAHAS-MD - Session Download Completed...");
