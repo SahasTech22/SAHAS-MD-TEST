@@ -52,7 +52,7 @@ const config = await readEnv();
 const prefix = config.PREFIX
 
 //=========================================
-async function connectToWA() {
+
     console.log(asciiArt);
     console.log("✅ SAHAS-MD - Session Download Completed...");
     const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/Session/')
